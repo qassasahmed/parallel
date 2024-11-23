@@ -223,9 +223,7 @@ A **worker pool** is a concurrency pattern used to manage and distribute tasks a
 
 ## How a Worker Pool Works
 1. **Task Queue**: A channel or buffered channel holds the tasks to be processed.
-2. **Workers**: Goroutines (workers) are launched to pull tasks from the queue.
-3. **Results**: Optionally, results can be sent back via another channel.
-  
+2. **Workers**: Goroutines (workers) are launched to pull tasks from the queue.  
 
 ## Example: Basic Worker Pool
 Imagine you have **10 boxes** to pack. If only one person (your main program) is working, it will take forever. But if you **hire 3 workers** (goroutines), they can share the workload, and **the job gets done much faster. At the same time, you don’t hire too many workers**, so you don’t run out of resources (like memory or processing power).
@@ -240,7 +238,7 @@ import (
 )
 
 // Worker function
-func worker(id int, tasks <-chan int, wg *sync.WaitGroup) {
+func worker(id int, tasks chan int, wg *sync.WaitGroup) {
     defer wg.Done()
     for task := range tasks {
         fmt.Printf("Worker %d processing task %d\n", id, task)
@@ -303,4 +301,4 @@ All tasks processed.
 
 ---
 
-Thank You ☕
+Made with ❤️ and ☕
