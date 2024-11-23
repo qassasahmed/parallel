@@ -1,7 +1,8 @@
 
 # Parallel Computing Lab 5 Notes - Autumn 2024-25
 
-This document contains the concepts and examples from the four previous labs.
+This document contains the concepts and examples from the four previous labs.  
+Made with ❤️ and ☕
 
 ## Review of Previous Labs
 
@@ -300,5 +301,4 @@ All tasks processed.
 4. **Batch Operations**: Running computational tasks or API calls in parallel.
 
 ---
-
-Made with ❤️ and ☕
+> NEXT TIME: https://youtu.be/ZWMiKQXmh9s?si=FalDgxEUbhRSxeD0
