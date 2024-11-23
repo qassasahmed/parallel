@@ -1,43 +1,39 @@
 package main
 
-import(
+import (
 	"fmt"
-	"time"
 	"math/rand"
+	"time"
 )
 
-func getMoney(channel chan int){
-//      Accept input
+func getMoney(ch chan int) {
+	//Accept number of trials
 	var trials int
-	fmt.Printf("Number of trials: ")
-	if _, err := fmt.Scan(&trials); err != nil{
-		fmt.Println("\nPlease Enter an Integer Value")
+	fmt.Println("Number of trials: ")
+	if _, err := fmt.Scan(&trials); err != nil {
+		fmt.Println("Please Provide Intege number")
 		return
 	}
 
-//      Iterating through the channel(send)
-	rand.Seed(time.Now().UnixNano())
+	rand.Seed(time.Now().UnixNano()) //Pseudu Random
 	for i := 1; i <= trials; i++ {
-		amount := rand.Intn(5000)
-		channel <- amount
-	}
-//      Make sure to close the channel to avoid deadlocks	
-	close(channel)
+		amount := rand.Intn(500)
+		ch <- amount
+	} // End sending
+	close(ch)
 }
 
-func main(){
+func main() {
 	channel := make(chan int)
 	go getMoney(channel)
 
-//      Iterate through the channel (recieve)
-	for msg := range channel{
-		fmt.Printf("\nYou've won: %d EGP\n", msg)
+	for msg := range channel { // check whether channel (sending)
+		fmt.Printf("You've won: %d$\n", msg)
 	}
-	
 
-/*	for i := 1; i <= trials; i++ {
-		go getMoney(channel)
-		fmt.Printf("\nTrial %d You've won: %d EGP\n", i, <- channel)
-	}
-*/
+	//	channel<-500 // Sending
+	//	channel<-600
+	//	fmt.Println(<-channel) // Recieving
+	//	fmt.Println(<-channel)
+
 }
