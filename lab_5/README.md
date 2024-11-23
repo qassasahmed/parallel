@@ -222,13 +222,13 @@ A **worker pool** is a concurrency pattern used to manage and distribute tasks a
 3. **Control**: Enables better control over task execution and resource utilization.  
 
 ## How a Worker Pool Works
-1. **Task Queue**: A channel or buffer holds the tasks to be processed.
+1. **Task Queue**: A channel or buffered channel holds the tasks to be processed.
 2. **Workers**: Goroutines (workers) are launched to pull tasks from the queue.
 3. **Results**: Optionally, results can be sent back via another channel.
   
 
 ## Example: Basic Worker Pool
-Imagine you have 100 boxes to pack. If only one person (your main program) is working, it will take forever. But if you hire 3 workers (goroutines), they can share the workload, and **the job gets done much faster. At the same time, you don’t hire too many workers**, so you don’t run out of resources (like memory or processing power).
+Imagine you have **10 boxes** to pack. If only one person (your main program) is working, it will take forever. But if you **hire 3 workers** (goroutines), they can share the workload, and **the job gets done much faster. At the same time, you don’t hire too many workers**, so you don’t run out of resources (like memory or processing power).
 
 ```go
 package main
@@ -250,9 +250,9 @@ func worker(id int, tasks <-chan int, wg *sync.WaitGroup) {
 
 func main() {
     const numWorkers = 3
-    const numTasks = 10
+    const numReq = 10
 
-    tasks := make(chan int, numTasks)
+    tasks := make(chan int, numReq) //Buffered Channel
     var wg sync.WaitGroup
 
     // Start workers
@@ -262,7 +262,7 @@ func main() {
     }
 
     // Send tasks to the task queue
-    for i := 1; i <= numTasks; i++ {
+    for i := 1; i <= numReq; i++ {
         tasks <- i
     }
     close(tasks) // Close the task channel to signal no more tasks
