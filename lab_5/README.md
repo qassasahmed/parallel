@@ -6,6 +6,7 @@ This document contains the concepts and examples from the four previous labs.
 ## Review of Previous Labs
 
 ### Lab 1: Basics of Golang and Concurrency
+Link: (Lab 1)[https://github.com/qassasahmed/parallel/tree/main/lab_5]
 
 #### Example: Running Functions Sequentially and Concurrently
 This example demonstrates the difference between running functions sequentially and concurrently, while also measuring execution time.
