@@ -205,4 +205,112 @@ func main() {
 }
 ```
 ---
+
+# Worker Pool in Go
+
+A **worker pool** is a concurrency pattern used to manage and distribute tasks among multiple worker goroutines efficiently. It helps optimize resource usage by limiting the number of active workers while processing a potentially large number of tasks.
+
+---
+
+## Why Use a Worker Pool?
+1. **Resource Management**: Prevents overwhelming the system by limiting the number of goroutines.
+2. **Parallelism**: Efficiently processes tasks in parallel.
+3. **Control**: Enables better control over task execution and resource utilization.
+
+---
+
+## How a Worker Pool Works
+1. **Task Queue**: A channel or buffer holds the tasks to be processed.
+2. **Workers**: Goroutines (workers) are launched to pull tasks from the queue.
+3. **Results**: Optionally, results can be sent back via another channel.
+
+---
+
+## Example: Basic Worker Pool
+
+```go
+package main
+
+import (
+    "fmt"
+    "sync"
+    "time"
+)
+
+// Worker function
+func worker(id int, tasks <-chan int, wg *sync.WaitGroup) {
+    defer wg.Done()
+    for task := range tasks {
+        fmt.Printf("Worker %d processing task %d\n", id, task)
+        time.Sleep(time.Second) // Simulate task processing time
+    }
+}
+
+func main() {
+    const numWorkers = 3
+    const numTasks = 10
+
+    tasks := make(chan int, numTasks)
+    var wg sync.WaitGroup
+
+    // Start workers
+    for i := 1; i <= numWorkers; i++ {
+        wg.Add(1)
+        go worker(i, tasks, &wg)
+    }
+
+    // Send tasks to the task queue
+    for i := 1; i <= numTasks; i++ {
+        tasks <- i
+    }
+    close(tasks) // Close the task channel to signal no more tasks
+
+    // Wait for all workers to finish
+    wg.Wait()
+
+    fmt.Println("All tasks processed.")
+}
+```
+
+---
+
+## Output
+```
+Worker 1 processing task 1
+Worker 2 processing task 2
+Worker 3 processing task 3
+Worker 1 processing task 4
+Worker 2 processing task 5
+Worker 3 processing task 6
+Worker 1 processing task 7
+Worker 2 processing task 8
+Worker 3 processing task 9
+Worker 1 processing task 10
+All tasks processed.
+```
+
+---
+
+## Key Points in the Example
+1. **Task Channel**: Tasks are sent into the `tasks` channel.
+2. **Workers**: Three workers process tasks concurrently.
+3. **Synchronization**: The `sync.WaitGroup` ensures all workers complete before exiting the program.
+
+---
+
+## Advantages of a Worker Pool
+- **Scalability**: Easily scales with the number of tasks and workers.
+- **Efficiency**: Reduces overhead compared to creating a new goroutine for every task.
+- **Control**: Allows limiting the number of concurrent workers.
+
+---
+
+## Use Cases for Worker Pools
+1. **Web Servers**: Handling multiple client requests.
+2. **Task Queues**: Processing jobs from a queue in parallel.
+3. **File Processing**: Reading or writing files concurrently.
+4. **Batch Operations**: Running computational tasks or API calls in parallel.
+
+---
+
 Thank You ☕
