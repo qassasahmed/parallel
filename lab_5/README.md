@@ -6,7 +6,7 @@ This document contains the concepts and examples from the four previous labs.
 ## Review of Previous Labs
 
 ### Lab 1: Basics of Golang and Concurrency
-Link: [Lab 1](https://github.com/qassasahmed/parallel/tree/main/lab_1)
+**Link: [Lab 1](https://github.com/qassasahmed/parallel/tree/main/lab_1)**
 
 #### Example: Running Functions Sequentially and Concurrently
 This example demonstrates the difference between running functions sequentially and concurrently, while also measuring execution time.
@@ -46,7 +46,7 @@ func main() {
 ---
 
 ### Lab 2: Channels and Buffered Channels
-Link: [Lab 1](https://github.com/qassasahmed/parallel/tree/main/lab_2)
+**Link: [Lab 2](https://github.com/qassasahmed/parallel/tree/main/lab_2)**
 
 
 #### Example: Preventing Application Closure with Channels
@@ -94,7 +94,7 @@ func factorial(num int) int {
 ---
 
 ### Lab 3: Sending Data Between Goroutines
-Link: [Lab 1](https://github.com/qassasahmed/parallel/tree/main/lab_3)
+**Link: [Lab 3](https://github.com/qassasahmed/parallel/tree/main/lab_3)**
 
 
 #### Example: Concurrent Loops with Channel Communication
@@ -138,7 +138,7 @@ func main() {
 ---
 
 ### Lab 4: Waitgroups, Slices, and Structs
-Link: [Lab 1](https://github.com/qassasahmed/parallel/tree/main/lab_4)
+**Link: [Lab 4](https://github.com/qassasahmed/parallel/tree/main/lab_4)**
 
 #### Example 1: Synchronizing Goroutines with Waitgroups
 
