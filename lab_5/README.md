@@ -222,6 +222,7 @@ A **worker pool** is a concurrency pattern used to manage and distribute tasks a
   
 
 ## Example: Basic Worker Pool
+Imagine you have 100 boxes to pack. If only one person (your main program) is working, it will take forever. But if you hire 3 workers (goroutines), they can share the workload, and **the job gets done much faster. At the same time, you don’t hire too many workers**, so you don’t run out of resources (like memory or processing power).
 
 ```go
 package main
