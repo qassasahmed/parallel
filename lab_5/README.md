@@ -1,7 +1,7 @@
 
 # Parallel Computing Lab 5 Notes - Autumn 2024-25
 
-This document consolidates the concepts and examples from Lab 5 and previous labs in the Parallel Computing course.
+This document contains the concepts and examples from the four previous labs.
 
 ## Review of Previous Labs
 
@@ -11,6 +11,13 @@ This document consolidates the concepts and examples from Lab 5 and previous lab
 This example demonstrates the difference between running functions sequentially and concurrently, while also measuring execution time.
 
 ```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
 func printNumbers(num int) {
     for i := 1; i <= num; i++ {
         fmt.Printf("%d ", i)
@@ -43,6 +50,13 @@ func main() {
 This program calculates the factorial of a number while simulating a file copy process in another goroutine.
 
 ```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
 func main() {
     ch_signal := make(chan bool)
     go copy_simulation(20, ch_signal)
@@ -82,6 +96,14 @@ func factorial(num int) int {
 The following program uses a channel to communicate between goroutines and implements pseudo-random number generation.
 
 ```go
+package main
+
+import (
+    "fmt"
+    "math/rand"
+    "time"
+)
+
 func getMoney(ch chan int) {
     var trials int
     fmt.Println("Number of trials: ")
@@ -115,6 +137,13 @@ func main() {
 #### Example 1: Synchronizing Goroutines with Waitgroups
 
 ```go
+package main
+
+import (
+    "fmt"
+    "sync"
+)
+
 func printNumber(num int, wg *sync.WaitGroup) {
     defer wg.Done()
     fmt.Println(num)
@@ -133,6 +162,12 @@ func main() {
 #### Example 2: Slices and Arrays
 
 ```go
+package main
+
+import (
+    "fmt"
+)
+
 func main() {
     number := [5]int{1, 2, 3, 4, 5}
     fmt.Println(number) // [1, 2, 3, 4, 5]
@@ -149,6 +184,12 @@ func main() {
 #### Example 3: Structs
 
 ```go
+package main
+
+import (
+    "fmt"
+)
+
 func main() {
     type Student struct {
         courses [5]string
@@ -163,7 +204,5 @@ func main() {
     fmt.Println("course:", qassas.courses)
 }
 ```
-
 ---
-
-Thank you for reviewing the content from Lab 5 and previous labs.
+Thank You ☕
