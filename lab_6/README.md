@@ -1,6 +1,5 @@
 
 # Lab 6: WorkerPool Part II
-Made with ❤️ and ☕
 ---
 
 ## `Task` Struct
@@ -32,7 +31,7 @@ Its `Process` method simulates processing the task by sleeping for the specified
 ## `WorkerPool` Struct
 
 The `WorkerPool` struct manages the concurrent processing of tasks. It contains the following fields:
-- `Tasks` ([]Task): A slice of tasks to be processed.
+- `Tasks` ([]Task): Tasks to be processed.
 - `NumberOfWorkers` (int): The number of workers available for processing.
 - `TasksChannel` (chan Task): A channel for distributing tasks to workers.
 - `WG` (sync.WaitGroup): A synchronization primitive to wait for all workers to complete their tasks.
@@ -73,8 +72,8 @@ func (w *WorkerPool) Pool() {
 
 ### Role:
 The `WorkerPool` struct is responsible for managing concurrent task processing:
-- The `Worker` method processes tasks received from the `TasksChannel`.
-- The `Pool` method initializes workers, assigns tasks, and waits for completion.
+- The `Worker` method processes tasks **received** from the `TasksChannel`.
+- The `Pool` method **initializes** workers, assigns tasks, and waits for completion.
 
 ---
 
@@ -104,4 +103,6 @@ func main(){
 ```
 # Assignment
 Add `ID` to each `WorkerPool` and show it in the output.  
-Example `Worker 3: Processing Task 11...`
+Example `Worker 3: Processing Task 11...`  
+
+Made with ❤️ and ☕
