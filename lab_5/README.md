@@ -2,7 +2,7 @@
 # Parallel Computing Lab 5 Notes - Autumn 2024-25
 
 This document contains the concepts and examples from the four previous labs.  
-Made with ❤️ and ☕
+Made with ❤️ and ☕.
 
 ## Review of Previous Labs
 
@@ -39,7 +39,7 @@ func main() {
     defer func() {
         fmt.Println("Execution time =", time.Since(now))
     }()
-    printNumbers(5)
+    printNumbers(5) // Add go keyword to launch a new goroutine
     printLetters('E')
 }
 ```
