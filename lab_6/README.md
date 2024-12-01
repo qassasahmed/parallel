@@ -6,7 +6,7 @@ Made with ❤️ and ☕
 ## `Task` Struct
 The `Task` struct represents a unit of work to be processed. It contains the following fields:
 - `ID` (int): A unique identifier for the task.
-- `ProcessTime` (int): The amount of time (in milliseconds) the task takes to process.
+- `ProcessTime` (int): The amount of time the task takes to process.
 
 ### Code:
 ```go
@@ -24,7 +24,8 @@ func (t *Task) Process() {
 ```
 
 ### Role:
-The `Task` struct encapsulates the data and behavior for individual units of work. Its `Process` method simulates processing the task by sleeping for the specified `ProcessTime`.
+The `Task` struct encapsulates the data and behavior for individual units of work.  
+Its `Process` method simulates processing the task by sleeping for the specified `ProcessTime`.
 
 ---
 
@@ -101,3 +102,6 @@ func main(){
 }
 
 ```
+# Assignment
+Add `ID` to each `WorkerPool` and show it in the output.  
+Example `Worker 3: Processing Task 11...`
